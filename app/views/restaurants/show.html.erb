@@ -16,10 +16,16 @@
 <% end %>
 
 <h2>Contact us</h2>
-<%= link_to "Write a review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
 <h3>Where you can find us: </h3>
 <p><%= @restaurant.address %></p>
 <h3>Call us</h3>
 <p>Our phone number: <%= @restaurant.phone_number %></p>
+
+<h2>Write a review</h2>
+<%= simple_form_for [ @restaurant, @review ] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit "Submit review", class: "btn btn-success" %>
+<% end %>
 
 <%= link_to "Back to all restaurants", restaurants_path, class: "btn btn-warning" %>
